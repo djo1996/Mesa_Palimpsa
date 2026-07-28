@@ -1,7 +1,7 @@
 <div align="center">
 <img width="600" alt="Palimpsa Logo" src="https://github.com/user-attachments/assets/7fa41f32-0976-42c9-8d32-2a602e56289f" />
 
-# MPU_LAB: Palimpsa & Mesanet Framework
+# Mesa_Palimpsa
 ### Learning to Remember, Learn, and Forget in Attention-Based Models
 
 [![Paper](https://img.shields.io/badge/Paper-ICML%202026-success)](https://arxiv.org/abs/2602.09075)
