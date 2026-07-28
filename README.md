@@ -51,7 +51,6 @@ uv pip install ninja packaging setuptools wheel
 uv pip install causal-conv1d
 uv pip install -e ./flash-linear-attention
 uv pip install -e ./Palimpsa
-uv pip install git+[https://github.com/pytorch/torchtitan.git@0b44d4c](https://github.com/pytorch/torchtitan.git@0b44d4c)
 uv pip install -e ./flame
 ```
 
