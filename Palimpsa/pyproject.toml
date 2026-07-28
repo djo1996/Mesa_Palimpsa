@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "palimpsa"
+version = "0.1.0"
+description = "Palimpsa: Novel Kernels for Linear Attention"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    # Pinning to your actual environment ensures your kernels compile correctly
+    "torch>=2.8.0",
+    "triton>=3.4.0",
+    "transformers>=4.55.0",
+    "einops>=0.8.1",
+    "ninja",
+    "packaging",
+    "wandb",
+    "tyro",
+    "lm_eval",
+    "matplotlib",
+    "numpy",
+    "wonderwords",  # Added for RULER/NIAH tasks
+    "nltk"          # Added for RULER/NIAH tasks
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["palimpsa*"]
