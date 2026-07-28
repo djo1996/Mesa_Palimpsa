@@ -35,9 +35,9 @@ The `flash-linear-attention` submodule included here contains critical fixes req
 *   **Config Fix:** Fixed a minor typo in the codebase to ensure the `use_output_gate` argument is correctly parsed and passed through the model configuration.
 
 ---
-## 🛠️ Installation & Setup
+## 🛠️ Minimal Installation & Setup
 
-### 1. Workspace & Dependencies
+### 1. Workspace & Core Dependencies
 We use `uv` for high-speed dependency management inside a standard virtual environment. Run this at the root of the repository:
 
 ```shell
@@ -51,22 +51,13 @@ uv pip install ninja packaging setuptools wheel
 uv pip install causal-conv1d
 uv pip install -e ./flash-linear-attention
 uv pip install -e ./Palimpsa
-uv pip install -e ./flame
-```
-
-### 2. Dataset Preparation (FineWeb-Edu)
-Flame requires the dataset to be cached locally. **Do this only once.** 
-
-```shell
-cd Palimpsa
-python3 data/download_fineweb.py --cache_dir /path/to/your/fast/storage/.cache
 ```
 
 ---
 
 ## 🚀 Quick Start: Shakespeare (NanoGPT)
 
-Verify model convergence and ensure your environment is fully functional on a small scale before launching Slurm jobs.
+Verify model convergence and ensure your environment is fully functional on a small scale before moving to large-scale distributed training.
 
 ```shell
 cd Palimpsa
@@ -76,7 +67,27 @@ python3 train_nano.py --model palimpsa --batch_size 16
 
 ---
 
-## 🔬 Launching Training (Slurm)
+## 🔬 Advanced: Research Scale (Flame)
+
+To train Large Language Models (LLMs) using the Flame engine:
+
+### 1. Install Flame Engine
+Ensure you are in the root `Mesa_Palimpsa` repository, then install Flame and TorchTitan:
+
+```shell
+uv pip install git+[https://github.com/pytorch/torchtitan.git@0b44d4c](https://github.com/pytorch/torchtitan.git@0b44d4c)
+uv pip install -e ./flame
+```
+
+### 2. Download FineWeb-Edu
+Flame requires the dataset to be cached locally. **Do this only once.** 
+
+```shell
+cd Palimpsa
+python3 data/download_fineweb.py --cache_dir /path/to/your/fast/storage/.cache
+```
+
+### 3. Launch Training (Slurm)
 
 To train the `mesanet-760M` model using Flame and our custom FLA kernels, use the following `sbatch` script. 
 
@@ -135,6 +146,7 @@ To evaluate distributed checkpoints (DCP) produced by the training engine:
 
 ```shell
 # 1. Convert DCP to HuggingFace format
+# Note: Ensure you are in the root Mesa_Palimpsa directory
 python3 Palimpsa/tools/convert_dcp_to_hf.py --exp exp/mesanet_760M_Test --step 2000
 
 # 2. Run Benchmarks via lm-evaluation-harness
