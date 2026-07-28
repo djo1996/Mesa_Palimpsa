@@ -75,7 +75,7 @@ To train Large Language Models (LLMs) using the Flame engine:
 Ensure you are in the root `Mesa_Palimpsa` repository, then install Flame and TorchTitan:
 
 ```shell
-uv pip install git+[https://github.com/pytorch/torchtitan.git@0b44d4c](https://github.com/pytorch/torchtitan.git@0b44d4c)
+uv pip install git+https://github.com/pytorch/torchtitan.git@0b44d4c
 uv pip install -e ./flame
 ```
 
